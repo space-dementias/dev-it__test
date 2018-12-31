@@ -14,10 +14,46 @@
                   ?>
 
 		<h1 class="entry-title "><?php the_title(); ?></h1>
+		<!-- country -->
+            <?php
+            $country = get_the_terms( $post->ID, 'country' );
+            ?>
+            <strong><span class="glyphicon glyphicon-map-marker"> </span> Страна: </strong><?php
+            if( is_array( $country ) ){
+                foreach( $country as $cur_term ){
+                    
+                    echo '<a href="'. get_term_link( (int)$cur_term->term_id, $cur_term->taxonomy ) .'">'. $cur_term->name .'</a> ';
+                }
+            }?>
 
-		<div class="entry-meta">
-			<?php unite_posted_on(); ?>
-		</div><!-- .entry-meta -->
+            <!-- genre -->
+            <?php
+            $genre = get_the_terms( $post->ID, 'movie_genre' );
+             ?>
+            <br><strong><span class="glyphicon glyphicon-facetime-video"> </span> Жанр: </strong><?php
+            if( is_array( $genre ) ){
+                foreach( $genre as $cur_term ){
+                    echo '<a href="'. get_term_link( (int)$cur_term->term_id, $cur_term->taxonomy ) .'">'. $cur_term->name .'</a> ';
+                }
+            }?>
+
+            <!-- actors -->
+            <?php
+            $actors = get_the_terms( $post->ID, 'actors' );
+             ?>
+            <br><strong><span class="glyphicon glyphicon-user"> </span> Актеры: </strong><?php
+            if( is_array( $actors ) ){
+                foreach( $actors as $cur_term ){
+                    echo '<a href="'. get_term_link( (int)$cur_term->term_id, $cur_term->taxonomy ) .'">'. $cur_term->name .'</a> ';
+                }
+            }?>
+
+            <!-- price -->
+            <br><label><span class="glyphicon glyphicon-euro"> </span> Стоимость: <?php echo get_post_meta($post->ID, 'price', 1); ?></label>
+
+            <!-- date -->
+            <br><label><span class="glyphicon glyphicon-calendar"> </span> Дата выхода в прокат: <?php echo get_post_meta($post->ID, 'date', 1); ?></label>
+
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

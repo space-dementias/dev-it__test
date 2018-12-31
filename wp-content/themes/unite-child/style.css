@@ -3,3 +3,25 @@
  * Template: unite
  */
 @import url('../unite/style.css');
+
+.entry-content{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
+.item-description p{
+	position: relative;
+	height: 75px;
+	margin-bottom: 15px;
+	overflow: hidden;
+	-ms-text-overflow: ellipsis;
+		text-overflow: ellipsis;	
+}
